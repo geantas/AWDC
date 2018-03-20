@@ -1,0 +1,19 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.NewsPage>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = "Master.cshtml";
+}
+
+<br />
+<h4 class="text-center">@Umbraco.Field("newsHeadline")</h4>
+<div class="ml-4">
+    @if (CurrentPage.HasValue("newsImage"))
+    {
+        var mediaId = @Umbraco.Field("newsImage").ToString();
+        <div>
+            <img src="@Umbraco.TypedMedia(mediaId).Url" alt="" />
+        </div>
+    }
+    <div>@Umbraco.Field("newsContent")</div>
+</div>
+        <br />

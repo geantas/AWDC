@@ -1,0 +1,56 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="@Umbraco.Field("metaDescription", recursive: true)">
+    <meta name="keywords" content="@Umbraco.Field("metaKeywords", recursive: true)">
+    
+    <link rel="shortcut icon" href="~/media/1005/kitten-png-hd.png" type="image/x-icon" />
+
+    <title>@Umbraco.Field("siteTitle", recursive: true)</title>
+
+    <!-- Default jQuery -->
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <!-- Bootstrap core JS -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/bootstrap/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="~/css/style.css" rel="stylesheet" />
+
+
+
+</head>
+
+<body>
+<header>
+@Html.Partial("header")
+</header>
+   <!-- Page Content -->
+   <div class="bg-primary text-white">
+       @RenderBody()
+   </div>
+<footer class="bg-secondary text-center text-white">
+    @Html.Partial("footer")
+</footer>
+    
+
+<!-- Bootstrap core JavaScript -->
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Scripts/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

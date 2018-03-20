@@ -1,0 +1,55 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.Members>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@using Newtonsoft.Json;
+@using Umbraco.Web.Models;
+
+@{
+    Layout = "Master.cshtml";
+
+
+    var memberService = ApplicationContext.Current.Services.MemberService;
+    var members = memberService.GetMembersByGroup("Active");
+
+    <br />
+    <h4 class="text-center">Active members list</h4>
+    <hr />
+    foreach (var member in members)
+    {
+        String[] skills = member.GetValue("skills").ToString().Split(',');
+        string skillString = string.Join(", ", from skill in skills
+                                               select umbraco.library.GetPreValueAsString(Convert.ToInt32(skill)));
+
+        <div class="ml-4 clearfix">
+            @if (member.GetValue("photo") != null)
+            {
+                string image = member.GetValue<string>("photo");
+                if (image != null)
+                {
+                    ImageCropDataSet imageCrop = JsonConvert.DeserializeObject<ImageCropDataSet>(image);
+                    string imagePath = imageCrop.Src.GetCropUrl(width: 100);
+                    <img class="float-left profile-pic" src="@imagePath" alt="@member.Name"/>
+                }
+            } else
+            {
+               <img class="float-left profile-pic" src="~/Media/profiles/empty.png" />
+            }
+            <div class="article">
+
+                <h5>
+                    @member.Name
+                </h5>
+                <div class="articlepreview">
+                    <strong>Address: </strong>@member.GetValue("address")<span>, </span>
+                    @member.GetValue("zip") @member.GetValue("city") <br />
+                    <strong>Email: </strong> @member.Email<br />
+                    <strong>Skills: </strong> @skillString<br />
+                </div>
+            </div>
+        </div>
+        <br />
+        <hr />
+    }
+    <br />
+}
+
+

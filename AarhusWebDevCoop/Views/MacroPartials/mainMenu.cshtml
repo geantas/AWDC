@@ -1,0 +1,106 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+@using Umbraco.Web
+
+@*
+    This snippet displays a list of links of the pages immediately under the top-most page in the content tree.
+    This is the home page for a standard website.
+    It also highlights the current active page/section in the navigation with the CSS class "current".
+*@
+
+@{ var root = Model.Content.Site(); }
+@{ var selection = root.Children.Where(x => x.IsVisible()).ToArray();
+    var selectionChilds = Model.Content.AncestorOrSelf(1)
+        .Children.Where(x => x.DocumentTypeAlias != "projectsOverview")
+        .First()
+        .Children
+        .Where(x => x.IsVisible());
+
+    IEnumerable<IPublishedContent> items = Umbraco.TypedContentAtRoot()
+    .First() //Root document
+    .Children() //Level 2 documents
+    .Where(x => x.DocumentTypeAlias == "projectsOverview")
+    .First() //Projects overview document
+    .Children() //Projects documents
+    .Where(x => x.HasValue("projectStatus") && Umbraco.GetPreValueAsString(x.GetPropertyValue<int>("projectStatus")) == "Completed")
+    .Where(x => x.IsVisible()); // Only visible documents
+                                //.OrderByDescending(x => x.CreateDate); //Newest projects first
+}
+<ul class="navbar-nav ml-auto nav">
+    <li class="nav-item @((Model.Content.Name == root.Name) ? "active" : null)">
+        <a class="nav-link" href="/">@root.Name</a>
+    </li>
+
+    @if (selection.Length > 0)
+    {
+        foreach (var menuItem in selection)
+        {
+            var isProtected = umbraco.library.IsProtected(menuItem.Id, menuItem.Path);
+            var loginAccess = umbraco.library.IsProtected(menuItem.Id, menuItem.Path)
+            && umbraco.library.HasAccess(menuItem.Id, menuItem.Path);
+
+            if (menuItem.Children().Where(x => x.IsVisible()).Count() > 0 && !isProtected || loginAccess)
+            {
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle nav-link @((Model.Content.Name == menuItem.Name) ? "active" : null)" href="@menuItem.Url">@menuItem.Name <b class="caret"></b></a>
+                    <ul class="dropdown-menu navbar-link">
+                        @if (menuItem.Name != "Projects")
+                        {
+                            foreach (var subMenuItem in selectionChilds)
+                            {
+
+                                <li class="nav-item">
+                                    <a class="dropdown-item" href="@subMenuItem.Url">@subMenuItem.Name</a>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+                            foreach (IPublishedContent subMenuItem in items)
+                            {
+                                var subIsProtected = umbraco.library.IsProtected(subMenuItem.Id, subMenuItem.Path);
+                                var subLoginAccess = umbraco.library.IsProtected(subMenuItem.Id, subMenuItem.Path)
+                                && umbraco.library.HasAccess(subMenuItem.Id, subMenuItem.Path);
+                                if (!subIsProtected || subLoginAccess)
+                                {
+                                    <li class="nav-item">
+                                        <a class="dropdown-item" href="@subMenuItem.Url">@subMenuItem.Name</a>
+                                    </li>
+                                }
+                            }
+                        }
+
+                    </ul>
+                </li>
+            }
+            else
+            {
+                if (menuItem.Name == "Login")
+                {
+                    // if a member is logged in, then the "Login" item in navigation menu will appear as "Account"
+                    if (Members.GetCurrentLoginStatus().IsLoggedIn)
+                    {
+                        <li class="nav-item @((Model.Content.Name == menuItem.Name) ? "active" : null)">
+                            <a class="nav-link" href="@menuItem.Url">Account</a>
+                        </li>
+                    }
+                    // if a member is NOT logged in, then the "Login" item in navigation menu will appear as normal, "Login"
+                    else
+                    {
+                        <li class="nav-item @((Model.Content.Name == menuItem.Name) ? "active" : null)">
+                            <a class="nav-link" href="@menuItem.Url">@menuItem.Name</a>
+                        </li>
+                    }
+                }
+                else
+                {
+                    <li class="nav-item @((Model.Content.Name == menuItem.Name) ? "active" : null)">
+                        <a class="nav-link" href="@menuItem.Url">@menuItem.Name</a>
+                    </li>
+                }
+
+            }
+        }
+    }
+</ul>
+

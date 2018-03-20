@@ -1,0 +1,53 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+@using Umbraco.Web
+
+
+@*
+    This snippet makes a list of links to the of children of the current page using an unordered HTML list.
+
+    How it works:
+    - It uses the Children method to get all child pages
+    - It then uses the OrderByDescending() method, which takes the property to sort. In this case the page's creation date.
+    - It then generates links so the visitor can go to each page
+*@
+
+@{
+
+    IEnumerable<IPublishedContent> selection = Umbraco.TypedContentAtRoot()
+.First() //Root document
+.Children() //Level 2 documents
+.Where(x => x.DocumentTypeAlias == "projectsOverview")
+.First() //Projects overview document
+.Children() //Projects documents
+.Where(x => x.HasValue("projectStatus") &&
+Umbraco.GetPreValueAsString(
+x.GetPropertyValue<int>("projectStatus")) == "Completed")
+.Where(x => x.IsVisible()) // Only visible documents
+.OrderByDescending(x => x.CreateDate); //Newest projects first
+
+}
+<hr />
+@foreach (var item in selection)
+{
+    var isProtected = umbraco.library.IsProtected(item.Id, item.Path);
+    var loginAccess = umbraco.library.IsProtected(item.Id, item.Path)
+    && umbraco.library.HasAccess(item.Id, item.Path);
+
+    if (!isProtected || loginAccess)
+    {
+    <div class="article">
+        <h5>
+            <a href="@item.Url">@item.Name</a>
+        </h5>
+        <div class="articlepreview">
+            Status: @(item.GetPropertyValue("projectStatus"))
+            <br />
+            <p>@Umbraco.Truncate(item.GetPropertyValue<string>("projectDescription"), 65)</p>
+            <a href="@item.Url">Read More..</a>
+        </div>
+    </div>
+    <br />
+    <hr />
+    }
+}
+<br />

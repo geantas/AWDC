@@ -1,0 +1,13 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.TextPage>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "Master.cshtml";
+}
+<br />
+<h4 class="text-center">@Umbraco.Field("header")</h4>
+<div class="ml-4">
+    <p class="text-center">@Umbraco.Field("mainContent")</p>
+</div>
+
+
+<br />

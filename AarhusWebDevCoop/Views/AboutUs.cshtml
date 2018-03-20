@@ -1,0 +1,9 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "Master.cshtml";
+}
+<br />
+@Model.Content.GetGridHtml(Html, "standardGridPage", "bootstrap3")
+<hr />
+<br />

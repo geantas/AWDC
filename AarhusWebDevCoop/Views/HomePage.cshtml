@@ -1,0 +1,25 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.HomePage>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+	Layout = "Master.cshtml";
+}
+<br />
+<div class="ml-4 text-center">
+    <h4 class="text-center">@Umbraco.Field("siteTitle")</h4>
+    <p class="text-center">@Umbraco.Field("mainContent")</p>
+    </div>
+<div class="ml-4">
+    <hr />
+    <p>Newest projects:</p>
+    @Umbraco.RenderMacro("listNewestProjects")
+
+    @if (CurrentPage.HasValue("logo"))
+    {
+        var mediaId = @Umbraco.Field("logo").ToString();
+        <img src="@Umbraco.TypedMedia(mediaId).Url" alt="" />
+    }
+</div>
+<br />
+
+
+

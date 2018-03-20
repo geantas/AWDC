@@ -1,0 +1,36 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+@using Umbraco.Web
+
+@{
+
+
+    IEnumerable<IPublishedContent> selection = Umbraco.TypedContentAtRoot()
+.First() //Root document
+.Children() //Level 2 documents
+.Where(x => x.DocumentTypeAlias == "projectsOverview")
+.First() //Projects overview document
+.Children() //Projects documents
+.Where(x => x.HasValue("projectStatus") &&
+Umbraco.GetPreValueAsString(
+x.GetPropertyValue<int>("projectStatus")) == "Completed")
+.Where(x => x.IsVisible()) // Only visible documents
+.OrderByDescending(x => x.CreateDate); //Newest projects first
+
+
+}
+
+@foreach (var menuItem in selection)
+{
+    var isProtected = umbraco.library.IsProtected(menuItem.Id, menuItem.Path);
+    var loginAccess = umbraco.library.IsProtected(menuItem.Id, menuItem.Path)
+    && umbraco.library.HasAccess(menuItem.Id, menuItem.Path);
+    if (!isProtected || loginAccess)
+    {
+    <ul>
+        <li>
+            <h5><a href="@menuItem.Url">@menuItem.Name</a></h5>
+
+        </li>
+    </ul>
+    }
+}

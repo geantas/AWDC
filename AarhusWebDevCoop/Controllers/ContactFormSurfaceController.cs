@@ -31,7 +31,7 @@ namespace AarhusWebDevCoop.Controllers
 
 
                 MailMessage message = new MailMessage();
-                message.To.Add("eaagipo@students.eaaa.dk");
+                message.To.Add("radubosssss@gmail.com");
                 message.Subject = model.Subject;
                 message.From = new MailAddress(model.Email, model.Name);
                 message.Body = model.Message;
@@ -57,7 +57,7 @@ namespace AarhusWebDevCoop.Controllers
                     smtp.EnableSsl = true;
                     smtp.Host = "smtp.gmail.com";
                     smtp.Port = 587;
-                    smtp.Credentials = new System.Net.NetworkCredential("@gmail.com", "");
+                    smtp.Credentials = new System.Net.NetworkCredential("radubosssss@gmail.com", "raduboss");
                     smtp.EnableSsl = true;
                     // send mail
                     smtp.Send(message);

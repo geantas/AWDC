@@ -1,6 +1,6 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
 @{
-	Layout = null;
+    Layout = null;
 }
 
 <!DOCTYPE html>
@@ -42,16 +42,13 @@
 
 <body>
     @Html.Partial("header")
+
     @RenderBody()
 
-<footer class="bg-secondary text-center text-white">
     @Html.Partial("footer")
-</footer>
-    
 
-<!-- Bootstrap core JavaScript -->
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script src="~/Scripts/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

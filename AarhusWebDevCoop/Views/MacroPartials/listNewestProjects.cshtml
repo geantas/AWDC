@@ -14,7 +14,7 @@
 Umbraco.GetPreValueAsString(
 x.GetPropertyValue<int>("projectStatus")) == "Completed")
 .Where(x => x.IsVisible()) // Only visible documents
-.OrderByDescending(x => x.CreateDate); //Newest projects first
+.OrderByDescending(x => x.CreateDate).Take(3); // take 3 projects and order show newest projects first
 
 
 }
@@ -26,11 +26,20 @@ x.GetPropertyValue<int>("projectStatus")) == "Completed")
     && umbraco.library.HasAccess(menuItem.Id, menuItem.Path);
     if (!isProtected || loginAccess)
     {
-    <ul>
-        <li>
-            <h5><a href="@menuItem.Url">@menuItem.Name</a></h5>
+        <div class="d-inline-block">
 
-        </li>
-    </ul>
+            <a class="project-link" href="@menuItem.Url">
+                @if (menuItem.HasValue("projectPicture"))
+    {
+        var mediaId = menuItem.GetPropertyValue("projectPicture").ToString();
+            <img src="@Umbraco.TypedMedia(mediaId).Url" alt="" />
+}
+                <h5><br />@menuItem.Name</h5>
+                <p>@Umbraco.Truncate(menuItem.GetPropertyValue<string>("projectDescription"), 45)</p>
+            </a>
+
+        </div>
+
     }
 }
+

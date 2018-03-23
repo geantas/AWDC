@@ -30,6 +30,7 @@
         <a class="nav-link" href="/">@root.Name</a>
     </li>
 
+
     @if (selection.Length > 0)
     {
         foreach (var menuItem in selection)
@@ -49,9 +50,10 @@
                             foreach (var subMenuItem in selectionChilds)
                             {
 
-                                <li class="nav-item">
+                                <li class="nav-item" >
                                     <a class="dropdown-item" href="@subMenuItem.Url">@subMenuItem.Name</a>
                                 </li>
+
                             }
                         }
                         else
@@ -103,4 +105,5 @@
         }
     }
 </ul>
+
 

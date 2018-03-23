@@ -395,6 +395,7 @@
     <Content Include="Media\profiles\man2.png" />
     <Content Include="Media\profiles\man3.png" />
     <Content Include="Media\profiles\man4.png" />
+    <Content Include="Media\writing.mp4" />
     <Content Include="obj\Debug\AarhusWebDevCoop.csproj.CopyComplete" />
     <Content Include="obj\Debug\AarhusWebDevCoop.csproj.CoreCompileInputs.cache" />
     <Content Include="obj\Debug\AarhusWebDevCoop.csprojResolveAssemblyReference.cache" />

@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="@Umbraco.Field("metaDescription", recursive: true)">
     <meta name="keywords" content="@Umbraco.Field("metaKeywords", recursive: true)">
-    
+
     <link rel="shortcut icon" href="~/media/1005/kitten-png-hd.png" type="image/x-icon" />
 
     <title>@Umbraco.Field("siteTitle", recursive: true)</title>
@@ -31,18 +31,19 @@
     <!-- Custom styles for this template -->
     <link href="~/css/style.css" rel="stylesheet" />
 
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300" rel="stylesheet">
+
+
+
 
 
 </head>
 
 <body>
-<header>
-@Html.Partial("header")
-</header>
-   <!-- Page Content -->
-   <div class="bg-primary text-white">
-       @RenderBody()
-   </div>
+    @Html.Partial("header")
+    @RenderBody()
+
 <footer class="bg-secondary text-center text-white">
     @Html.Partial("footer")
 </footer>

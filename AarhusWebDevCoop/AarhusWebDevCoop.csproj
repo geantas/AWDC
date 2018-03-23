@@ -282,6 +282,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\AarhusWebDevCoop.mdf" />
+    <Content Include="App_Data\AarhusWebDevCoop_log.ldf">
+      <DependentUpon>AarhusWebDevCoop.mdf</DependentUpon>
+    </Content>
     <Content Include="config\grid.editors.config.js" />
     <Content Include="config\imageprocessor\security.config" />
     <Content Include="config\imageprocessor\processing.config" />
@@ -377,6 +381,10 @@
     <Content Include="bin\roslyn\vbc.rsp" />
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="bin\x86\Microsoft.VC90.CRT\Microsoft.VC90.CRT.manifest" />
+    <Content Include="Media\aarhus-night.jpg" />
+    <Content Include="Media\aarhus-night.png" />
+    <Content Include="Media\Musikhuset_Aarhus_Nat.jpg" />
+    <Content Include="Media\port-of-aarhus.jpg" />
     <Content Include="Media\profiles\boy.png" />
     <Content Include="Media\profiles\boy1.png" />
     <Content Include="Media\profiles\empty.png" />
@@ -387,6 +395,7 @@
     <Content Include="Media\profiles\man2.png" />
     <Content Include="Media\profiles\man3.png" />
     <Content Include="Media\profiles\man4.png" />
+    <Content Include="Media\writing.mp4" />
     <Content Include="obj\Debug\AarhusWebDevCoop.csproj.CopyComplete" />
     <Content Include="obj\Debug\AarhusWebDevCoop.csproj.CoreCompileInputs.cache" />
     <Content Include="obj\Debug\AarhusWebDevCoop.csprojResolveAssemblyReference.cache" />

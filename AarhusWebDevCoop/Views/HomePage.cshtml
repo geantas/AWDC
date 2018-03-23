@@ -1,25 +1,31 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.HomePage>
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
-	Layout = "Master.cshtml";
+    Layout = "Master.cshtml";
 }
-<br />
-<div class="ml-4 text-center">
-    <h4 class="text-center">@Umbraco.Field("siteTitle")</h4>
-    <p class="text-center">@Umbraco.Field("mainContent")</p>
+<header>
+    <div class="header-content text-white">
+        <div class="header-content-inner">
+            <h1 id="homeHeading" class="thin">@Umbraco.Field("siteTitle")</h1>
+            <span class="">aarhus web developers coop</span>
+            <p class="text-white thin">@Umbraco.Field("mainContent")</p>
+            <a href="#newest" class="btn btn-primary btn-xl page-scroll">Our projects</a>
+        </div>
     </div>
-<div class="ml-4">
-    <hr />
-    <p>Newest projects:</p>
-    @Umbraco.RenderMacro("listNewestProjects")
+</header>
 
-    @if (CurrentPage.HasValue("logo"))
-    {
-        var mediaId = @Umbraco.Field("logo").ToString();
-        <img src="@Umbraco.TypedMedia(mediaId).Url" alt="" />
-    }
-</div>
-<br />
+<section class="bg-primary" id="newest">
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading text-white light">Newest projects</h2>
+                <hr class="light">
+                <div class="text-faded">@Umbraco.RenderMacro("listNewestProjects")</div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 

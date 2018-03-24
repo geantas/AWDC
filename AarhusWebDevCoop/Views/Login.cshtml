@@ -3,9 +3,29 @@
 @{
     Layout = "Master.cshtml";
 }
+<div class="fullsection">
+    <br />
+    <br />
+    <br />
+    <section>
+        <h1 class="light text-center text-white">
+            @if (Members.GetCurrentLoginStatus().IsLoggedIn) // if a member is logged in, then the "Login" page will be called "Account"
+            {
+                <span>Account details</span>
+            }
+            // if a member is NOT logged in, then the "Login" page will be called Login
+            else
+            {
+                @CurrentPage.Name
+            }
+        </h1>
+        <hr class="col-sm-6 light" />
+    </section>
+    <section>
 
-<br />
-<div class="text-center ml-4">
-    @Html.Partial("loginForm")
+        <div class="col-lg-12 text-center text-white">
+            @Html.Partial("loginForm")
+        </div>
+    </section>
 </div>
-<br />
+

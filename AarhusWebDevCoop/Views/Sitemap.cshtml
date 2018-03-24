@@ -1,11 +1,19 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.Sitemap>
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
-	Layout = "Master.cshtml";
+    Layout = "Master.cshtml";
 }
-<br />
-<h4 class="text-center">Sitemap</h4>
-<div class="ml-4">
-    @Html.Partial("sitemap_pv")
-    </div>
+<div class="fullsection">
     <br />
+    <br />
+    <br />
+    <section>
+        <h1 class="light text-center text-white">@CurrentPage.Name</h1>
+        <hr class="col-sm-6 light" />
+    </section>
+    <section>
+        <div class="col-lg-12 text-left text-white">
+            @Html.Partial("sitemap_pv")
+        </div>
+    </section>
+</div>

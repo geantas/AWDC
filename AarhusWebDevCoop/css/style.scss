@@ -1,5 +1,14 @@
 html, body {
-    height: 100%;
+    height: 100vh;
+}
+
+body {
+    min-height: 100vh;
+}
+
+footer {
+    padding: 1rem;
+    clear: both;
 }
 
 .thin {
@@ -7,7 +16,13 @@ html, body {
     font-weight: 100;
 }
 
+
 .light {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+.light-font {
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
 }
@@ -25,11 +40,25 @@ li.dropdown:hover > .dropdown-menu {
     float: none;
 }
 
-.monday-kitten-img img {
+.about-us-img img {
     width: 100%;
+    -webkit-filter: opacity(90%);
+    filter: opacity(90%);
 }
 
+.about-us-paragraph p {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+
 .profile-pic {
+    margin-right: 15px;
+    max-width: 100px;
+    height:auto;
+}
+
+.item-pic {
     margin-right: 15px;
 }
 
@@ -89,7 +118,7 @@ header .header-content .header-content-inner p {
         -ms-transform: translateY(-50%);
         transform: translateY(-50%);
         padding: 0 50px;
-        color:white;
+        color: white;
     }
 
     header .header-content .header-content-inner {
@@ -120,6 +149,9 @@ a.project-link {
 
 .project-link img {
     text-decoration: none;
+    width: 350px;
+    height: 450px;
+    object-fit: cover;
     -webkit-filter: opacity(85%);
     filter: opacity(85%);
 }
@@ -127,4 +159,65 @@ a.project-link {
 .project-link:hover img {
     -webkit-filter: opacity(100%);
     filter: opacity(100%);
+}
+
+.link-to-item img {
+    text-decoration: none;
+    object-fit: cover;
+    -webkit-filter: opacity(85%);
+    filter: opacity(85%);
+}
+
+.link-to-item:hover img {
+    -webkit-filter: opacity(100%);
+    filter: opacity(100%);
+}
+
+.project-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+
+
+
+
+
+.text-wrap p {
+    max-width: 350px;
+    overflow-wrap: normal;
+}
+
+.short-description p {
+    max-width: 55%;
+    overflow-wrap: normal;
+}
+
+.writing-video {
+    position: fixed;
+    top: 0;
+    width: 104vw;
+    margin-right: 2vw;
+    margin-left: -2vw;
+    height: auto;
+    z-index: -1;
+}
+
+#video {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    -webkit-filter: blur(10px);
+    filter: blur(10px);
+}
+
+.form-group {
+    font-size: 20px;
+}
+
+
+.fullsection {
+    min-height: 100vh;
 }

@@ -9,17 +9,25 @@
     // Just a comment - please ignore :)
     // Just a comment from "New_features" branch. Please ignore this one, too :)
     // looks like it is not working as expected..
-    
+
 
     //One more test here, with changed name from "New_features" to "develop" and using Git Flow
     //Kazkokia nesamone..
     var memberService = ApplicationContext.Current.Services.MemberService;
-    var members = memberService.GetMembersByGroup("Active");
-
+    var activemembers = memberService.GetMembersByGroup("Active");
+    var guestmembers = memberService.GetMembersByGroup("Guest");
+    //GetMembersByGroup("Active");
+<div class="fullsection">
     <br />
-    <h4 class="text-center">Members list</h4>
-    <hr />
-    foreach (var member in members)
+    <br />
+    <br />
+    <section>
+        <h1 class="light text-center text-white">@CurrentPage.Name</h1>
+    </section>
+    <hr class="col-sm-6 thin" />
+    <h2 class="light text-center text-white">Active members</h2>
+    <hr class="col-sm-6 thin" />
+    @foreach (var member in activemembers)
     {
         String[] skills = member.GetValue("skills").ToString().Split(',');
         string skillString = string.Join(", ", from skill in skills
@@ -33,31 +41,56 @@
                 {
                     ImageCropDataSet imageCrop = JsonConvert.DeserializeObject<ImageCropDataSet>(image);
                     string imagePath = imageCrop.Src.GetCropUrl(width: 100);
-                    <img class="float-left profile-pic" src="@imagePath" alt="@member.Name"/>
+                    <img class="float-left profile-pic" src="@imagePath" alt="@member.Name" />
                 }
-            } else
+            }
+            else
             {
                 //testing if there will be changes from "master" branch :)
-               <img class="float-left profile-pic" src="~/Media/profiles/empty.png" />
+                <img class="float-left profile-pic" src="~/Media/profiles/empty.png" />
             }
-            
-            <div class="article">
 
-                <h5>
-                    @member.Name
-                </h5>
-                <div class="articlepreview">
-                    <strong>Address: </strong>@member.GetValue("address")<span>, </span>
-                    @member.GetValue("zip") @member.GetValue("city") <br />
-                    <strong>Email: </strong> @member.Email<br />
-                    <strong>Skills: </strong> @skillString<br />
-                </div>
+            <h3 class="light-font text-white">@member.Name</h3>
+            <div class="text-white">
+                <strong>Address: </strong>@member.GetValue("address")<span>, </span>@member.GetValue("zip") @member.GetValue("city") <br />
+                <strong>Email: </strong> @member.Email<br />
+                <strong>Skills: </strong> @skillString<br />
             </div>
         </div>
+
+        <br />
+        <hr />
+    }
+    <h2 class="light text-center text-white">Guest members</h2>
+    <hr class="col-sm-6 thin" />
+    @foreach (var member in guestmembers)
+    {
+        <div class="ml-4 clearfix">
+            @if (member.GetValue("photo") != null)
+            {
+                string image = member.GetValue<string>("photo");
+                if (image != null)
+                {
+                    ImageCropDataSet imageCrop = JsonConvert.DeserializeObject<ImageCropDataSet>(image);
+                    string imagePath = imageCrop.Src.GetCropUrl(width: 100);
+                    <img class="float-left profile-pic" src="@imagePath" alt="@member.Name" />
+                }
+            }
+            else
+            {
+                //testing if there will be changes from "master" branch :)
+                <img class="float-left profile-pic" src="~/Media/profiles/empty.png" />
+            }
+
+            <h3 class="light-font text-white">@member.Name</h3>
+            <div class="text-white">
+                <strong>Email: </strong> @member.Email<br />
+            </div>
+        </div>
+
         <br />
         <hr />
     }
     <br />
+</div>
 }
-
-

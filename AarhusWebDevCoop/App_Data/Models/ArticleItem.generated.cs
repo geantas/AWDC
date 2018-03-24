@@ -55,6 +55,15 @@ namespace Umbraco.Web.PublishedContentModels
 		}
 
 		///<summary>
+		/// articlePicture
+		///</summary>
+		[ImplementPropertyType("articlePicture")]
+		public IPublishedContent ArticlePicture
+		{
+			get { return this.GetPropertyValue<IPublishedContent>("articlePicture"); }
+		}
+
+		///<summary>
 		/// Article Title
 		///</summary>
 		[ImplementPropertyType("articleTitle")]

@@ -1,0 +1,157 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+@using Umbraco.Web
+@using Newtonsoft.Json;
+@using Umbraco.Web.Models;
+
+
+@*
+    This snippet makes a list of links to the of children of the current page using an unordered HTML list.
+
+    How it works:
+    - It uses the Children method to get all child pages
+    - It then uses the OrderByDescending() method, which takes the property to sort. In this case the page's creation date.
+    - It then generates links so the visitor can go to each page
+*@
+
+@{
+
+    IEnumerable<IPublishedContent> selection = Umbraco.TypedContentAtRoot()
+.First() //Root document
+.Children() //Level 2 documents
+.Where(x => x.DocumentTypeAlias == "projectsOverview")
+.First() //Projects overview document
+.Children() //Projects documents
+.Where(x => x.HasValue("projectStatus") &&
+Umbraco.GetPreValueAsString(
+x.GetPropertyValue<int>("projectStatus")) == "Completed")
+.Where(x => x.IsVisible()) // Only visible documents
+.OrderByDescending(x => x.CreateDate); //Newest projects first
+
+    IEnumerable<IPublishedContent> activeselection = Umbraco.TypedContentAtRoot()
+.First() //Root document
+.Children() //Level 2 documents
+.Where(x => x.DocumentTypeAlias == "projectsOverview")
+.First() //Projects overview document
+.Children() //Projects documents
+.Where(x => x.HasValue("projectStatus") &&
+Umbraco.GetPreValueAsString(
+x.GetPropertyValue<int>("projectStatus")) == "Completed")
+.Where(x => x.IsVisible()) // Only visible documents
+.OrderByDescending(x => x.CreateDate); //Newest projects first
+
+    IEnumerable<IPublishedContent> guestselection = Umbraco.TypedContentAtRoot()
+.First() //Root document
+.Children() //Level 2 documents
+.Where(x => x.DocumentTypeAlias == "projectsOverview")
+.First() //Projects overview document
+.Children() //Projects documents
+.Where(x => x.HasValue("projectStatus") &&
+Umbraco.GetPreValueAsString(
+x.GetPropertyValue<int>("projectStatus")) == "Completed" ||
+Umbraco.GetPreValueAsString(
+x.GetPropertyValue<int>("projectStatus")) == "Initiated" ||
+Umbraco.GetPreValueAsString(
+x.GetPropertyValue<int>("projectStatus")) == "Under development")
+.Where(x => x.IsVisible()) // Only visible documents
+.OrderByDescending(x => x.CreateDate); //Newest projects first
+
+    var memberService = ApplicationContext.Current.Services.MemberService;
+    var activemembers = memberService.GetMembersByGroup("Active");
+    var guestmembers = memberService.GetMembersByGroup("Guest");
+
+    if (Members.GetCurrentLoginStatus().IsLoggedIn)
+    {
+        var loggedinmember = Members.GetCurrentMember().Name;
+
+        foreach (var member in activemembers)
+        {
+            if (loggedinmember == member.Name)
+            {
+                var membergroup = "active";
+            }
+        }
+
+        foreach (var member in guestmembers)
+        {
+            if (loggedinmember == member.Name)
+            {
+                var membergroup = "guest";
+            }
+        }
+    }
+    else
+    {
+        var membergroup = "public";
+    }
+
+}
+
+    if (membergroup == "guest") { // this is not working
+        <p>hello!</p>
+    }
+        @foreach (var item in guestselection)
+        {
+            var isProtected = umbraco.library.IsProtected(item.Id, item.Path);
+            var loginAccess = umbraco.library.IsProtected(item.Id, item.Path)
+            && umbraco.library.HasAccess(item.Id, item.Path);
+
+            if (!isProtected || loginAccess)
+            {
+                <div class="ml-4 clearfix">
+                    @if (item.HasValue("projectPicture"))
+                    {
+                        var mediaId = item.GetPropertyValue("projectPicture").ToString();
+                        <a class="link-to-item" href="@item.Url">
+                            <img class="project-img float-left" src="@Umbraco.TypedMedia(mediaId).Url" alt="" />
+                        </a>
+                    }
+                    else
+                    {
+                        <img class="project-img float-left" src="~/Media/not-available.jpg" />
+                    }
+                    <h3 class="light-font">
+                        <a class="project-link" href="@item.Url">@item.Name</a>
+                    </h3>
+                    <div class="light-font text-white short-description">
+                        <p class="text-justify">@Umbraco.Truncate(item.GetPropertyValue<string>("projectDescription"), 199)</p>
+                        <a class="project-link text-dark" href="@item.Url">Read More...</a>
+                    </div>
+                </div>
+                <hr />
+            }
+        }
+    }
+
+    @foreach (var item in selection)
+    {
+        var isProtected = umbraco.library.IsProtected(item.Id, item.Path);
+        var loginAccess = umbraco.library.IsProtected(item.Id, item.Path)
+        && umbraco.library.HasAccess(item.Id, item.Path);
+
+        if (!isProtected || loginAccess)
+        {
+            <div class="ml-4 clearfix">
+                @if (item.HasValue("projectPicture"))
+                {
+                    var mediaId = item.GetPropertyValue("projectPicture").ToString();
+                    <a class="link-to-item" href="@item.Url">
+                        <img class="project-img float-left" src="@Umbraco.TypedMedia(mediaId).Url" alt="" />
+                    </a>
+                }
+                else
+                {
+                    <img class="project-img float-left" src="~/Media/not-available.jpg" />
+                }
+                <h3 class="light-font">
+                    <a class="project-link" href="@item.Url">@item.Name</a>
+                </h3>
+                <div class="light-font text-white short-description">
+                    <p class="text-justify">@Umbraco.Truncate(item.GetPropertyValue<string>("projectDescription"), 199)</p>
+                    <a class="project-link text-dark" href="@item.Url">Read More...</a>
+                </div>
+            </div>
+            <hr />
+        }
+    }
+
+

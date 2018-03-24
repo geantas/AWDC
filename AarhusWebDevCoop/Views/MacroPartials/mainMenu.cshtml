@@ -81,7 +81,7 @@
                 {
                     // if a member is logged in, then the "Login" item in navigation menu will appear as "Account"
                     if (Members.GetCurrentLoginStatus().IsLoggedIn)
-                    {
+                    { 
                         <li class="nav-item @((Model.Content.Name == menuItem.Name) ? "active" : null)">
                             <a class="nav-link" href="@menuItem.Url">Account</a>
                         </li>

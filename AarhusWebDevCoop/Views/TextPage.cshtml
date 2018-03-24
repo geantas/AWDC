@@ -3,11 +3,17 @@
 @{
     Layout = "Master.cshtml";
 }
-<br />
-<h4 class="text-center">@Umbraco.Field("header")</h4>
-<div class="ml-4">
-    <p class="text-center">@Umbraco.Field("mainContent")</p>
+<div class="fullsection">
+    <br />
+    <br />
+    <br />
+    <section>
+        <h1 class="light text-center text-white">@CurrentPage.Name</h1>
+        <hr class="col-sm-6 light" />
+    </section>
+    <section>
+        <div class="col-lg-12 text-center text-white light-font">
+            @Umbraco.Field("mainContent")
+        </div>
+    </section>
 </div>
-
-
-<br />

@@ -30,12 +30,18 @@ x.GetPropertyValue<int>("projectStatus")) == "Completed")
 
             <a class="project-link" href="@menuItem.Url">
                 @if (menuItem.HasValue("projectPicture"))
-    {
-        var mediaId = menuItem.GetPropertyValue("projectPicture").ToString();
-            <img src="@Umbraco.TypedMedia(mediaId).Url" alt="" />
-}
+                {
+                    
+                    var mediaId = menuItem.GetPropertyValue("projectPicture").ToString();
+                    <img class="home-projects-pic" src="@Umbraco.TypedMedia(mediaId).Url" alt="" />
+                } else
+                {
+                    <img src = "~/Media/open-box.png" />
+                }
                 <h5><br />@menuItem.Name</h5>
-                <p>@Umbraco.Truncate(menuItem.GetPropertyValue<string>("projectDescription"), 45)</p>
+                <div class="text-wrap">
+                <p>@Umbraco.Truncate(menuItem.GetPropertyValue<string>("projectDescription"), 99)</p>
+                </div>
             </a>
 
         </div>

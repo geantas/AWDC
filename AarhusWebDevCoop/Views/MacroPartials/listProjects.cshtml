@@ -1,5 +1,7 @@
 ﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
 @using Umbraco.Web
+@using Newtonsoft.Json;
+@using Umbraco.Web.Models;
 
 
 @*
@@ -26,7 +28,7 @@ x.GetPropertyValue<int>("projectStatus")) == "Completed")
 .OrderByDescending(x => x.CreateDate); //Newest projects first
 
 }
-<hr />
+
 @foreach (var item in selection)
 {
     var isProtected = umbraco.library.IsProtected(item.Id, item.Path);
@@ -35,19 +37,25 @@ x.GetPropertyValue<int>("projectStatus")) == "Completed")
 
     if (!isProtected || loginAccess)
     {
-    <div class="article">
-        <h5>
-            <a href="@item.Url">@item.Name</a>
-        </h5>
-        <div class="articlepreview">
-            Status: @(item.GetPropertyValue("projectStatus"))
-            <br />
-            <p>@Umbraco.Truncate(item.GetPropertyValue<string>("projectDescription"), 65)</p>
-            <a href="@item.Url">Read More..</a>
+        <div class="ml-4 clearfix">
+            @if (item.HasValue("projectPicture"))
+            {
+                var mediaId = item.GetPropertyValue("projectPicture").ToString();
+                <img class="project-img float-left" src="@Umbraco.TypedMedia(mediaId).Url" alt="" />
+            }
+            else
+            {
+                <img class="project-img float-left" src="~/Media/not-available.jpg" />
+            }
+            <h3 class="light-font">
+                <a class="project-link" href="@item.Url">@item.Name</a>
+            </h3>
+            <div class="light-font text-white short-description">
+                <p class="text-justify">@Umbraco.Truncate(item.GetPropertyValue<string>("projectDescription"), 199)</p>
+                <a class="project-link text-dark" href="@item.Url">Read More...</a>
+            </div>
         </div>
-    </div>
-    <br />
-    <hr />
+        <hr />
     }
 }
 <br />

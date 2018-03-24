@@ -26,8 +26,6 @@
     using (Html.BeginUmbracoForm<UmbLoginController>("HandleLogin"))
     {
         <fieldset>
-            <h4 class="text-center">Login area</h4>
-            <br />
             <div class="form-group">
                 @Html.LabelFor(m => loginModel.Username, new { @class = "col-sm-2 control-label" })
                 <div class="col-sm-6 col-centered">
@@ -54,10 +52,13 @@
 }
 else
 {
-    <p>
-        You are currently logged in as
-        @Members.GetCurrentLoginStatus().Name
-    </p>
+        <p>
+            You are currently logged in as
+            @Members.GetCurrentLoginStatus().Name
+        </p>
+        <p>
+            Your email is @Members.GetCurrentLoginStatus().Email
+        </p>
 
     var logoutModel = new PostRedirectModel();
     logoutModel.RedirectUrl = "/";

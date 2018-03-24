@@ -1,5 +1,6 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ProjectsOverview>
 @using ContentModels = Umbraco.Web.PublishedContentModels;
+
 @{
     Layout = "Master.cshtml";
 
@@ -17,13 +18,27 @@
     x.GetPropertyValue<int>("projectStatus")) == "Completed")
     .Where(x => x.IsVisible()) // Only visible documents
     .OrderByDescending(x => x.CreateDate); //Newest projects first
-
 }
 
+<div class="fullsection">
+    <br />
+    <br />
+    <br />
+    <section>
+        <h1 class="light text-center text-white">@CurrentPage.Name</h1>
+    </section>
 
-<br />
-<h4 class="text-center">@Umbraco.Field("projectsTitle")</h4>
-<div class="ml-4">
-    <p class="text-center">@Umbraco.Field("projectsBodyText")</p>
-    @Umbraco.RenderMacro("listProjects")
+    <section>
+        <div class="col-lg-12 text-center text-white">
+            <hr class="col-sm-6 thin" />
+            @Umbraco.Field("projectsBodyText")
+            <hr class="col-sm-6 light" />
+            <p></p>
+        </div>
+    </section>
+    <section>
+        <div class="ml-4">
+            @Umbraco.RenderMacro("listProjects")
+        </div>
+    </section>
 </div>

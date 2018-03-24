@@ -12,23 +12,33 @@
 *@
 
 @{ var selection = Model.Content.Children.Where(x => x.IsVisible()).OrderByDescending(x => x.CreateDate).ToArray(); }
-<hr />
+
 @if (selection.Length > 0)
 {
 
     foreach (var item in selection)
     {
-        <div class="article">
-            <h5>
-                <a href="@item.Url">@item.Name</a>
-            </h5>
-            <div class="articlepreview">
-                <p>@Umbraco.Truncate(item.GetPropertyValue<string>("articleContent"), 77)</p>
-                <a href="@item.Url">Read More..</a>
+        <div class="ml-4 clearfix">
+            @if (item.HasValue("articlePicture"))
+            {
+                var mediaId = item.GetPropertyValue("articlePicture").ToString();
+                <a class="link-to-item" href="@item.Url">
+                    <img class="project-img float-left" src="@Umbraco.TypedMedia(mediaId).Url" alt="" />
+                </a>
+            }
+            else
+            {
+                <img class="project-img float-left" src="~/Media/not-available.jpg" />
+            }
+            <h3 class="light-font">
+                <a class="project-link" href="@item.Url">@item.Name</a>
+            </h3>
+            <div class="light-font text-white short-description">
+                <p class="text-justify">@Umbraco.Truncate(item.GetPropertyValue<string>("articleContent"), 199)</p>
+                <a class="project-link text-dark" href="@item.Url">Read More...</a>
             </div>
         </div>
-        <br />
         <hr />
     }
-    <br />
 }
+<br />

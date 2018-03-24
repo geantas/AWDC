@@ -14,7 +14,8 @@
 Umbraco.GetPreValueAsString(
 x.GetPropertyValue<int>("projectStatus")) == "Completed")
 .Where(x => x.IsVisible()) // Only visible documents
-.OrderByDescending(x => x.CreateDate).Take(3); // take 3 projects and order show newest projects first
+.OrderByDescending(x => x.CreateDate) // Newest projects first
+.Take(3); // Show only 3 projects
 
 
 }

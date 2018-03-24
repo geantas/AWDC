@@ -15,15 +15,87 @@
         .Children
         .Where(x => x.IsVisible());
 
+    var memberService = ApplicationContext.Current.Services.MemberService;
+    var activemembers = memberService.GetMembersByGroup("Active");
+    var guestmembers = memberService.GetMembersByGroup("Guest");
+    var membergroup = "public";
+
     IEnumerable<IPublishedContent> items = Umbraco.TypedContentAtRoot()
     .First() //Root document
     .Children() //Level 2 documents
     .Where(x => x.DocumentTypeAlias == "projectsOverview")
     .First() //Projects overview document
     .Children() //Projects documents
-    .Where(x => x.HasValue("projectStatus") && Umbraco.GetPreValueAsString(x.GetPropertyValue<int>("projectStatus")) == "Completed")
-    .Where(x => x.IsVisible()); // Only visible documents
-                                //.OrderByDescending(x => x.CreateDate); //Newest projects first
+    .Where(x => x.HasValue("projectStatus") &&
+    Umbraco.GetPreValueAsString(
+    x.GetPropertyValue<int>("projectStatus")) == "Completed")
+    .Where(x => x.IsVisible()) // Only visible documents
+    .OrderByDescending(x => x.CreateDate); //Newest projects first
+
+    if (Members.GetCurrentLoginStatus().IsLoggedIn)
+    {
+        var loggedinmember = Members.GetCurrentMember().Name;
+
+        foreach (var member in activemembers)
+        {
+            if (loggedinmember == member.Name)
+            {
+                membergroup = "active";
+
+                items = Umbraco.TypedContentAtRoot()
+                .First() //Root document
+                .Children() //Level 2 documents
+                .Where(x => x.DocumentTypeAlias == "projectsOverview")
+                .First() //Projects overview document
+                .Children() //Projects documents
+                .Where(x => x.IsVisible()) // Only visible documents
+                .OrderByDescending(x => x.CreateDate); //Newest projects first
+            }
+        }
+
+        foreach (var member in guestmembers)
+        {
+            if (loggedinmember == member.Name)
+            {
+                membergroup = "guest";
+
+                items = Umbraco.TypedContentAtRoot()
+                .First() //Root document
+                .Children() //Level 2 documents
+                .Where(x => x.DocumentTypeAlias == "projectsOverview")
+                .First() //Projects overview document
+                .Children() //Projects documents
+                .Where(x => x.HasValue("projectStatus") &&
+                Umbraco.GetPreValueAsString(
+                x.GetPropertyValue<int>("projectStatus")) == "Completed" ||
+                Umbraco.GetPreValueAsString(
+                x.GetPropertyValue<int>("projectStatus")) == "Initiated" ||
+                Umbraco.GetPreValueAsString(
+                x.GetPropertyValue<int>("projectStatus")) == "Under development")
+                .Where(x => x.IsVisible()) // Only visible documents
+                .OrderByDescending(x => x.CreateDate); //Newest projects first
+
+            }
+        }
+
+    }
+    else
+    {
+        membergroup = "public";
+
+        items = Umbraco.TypedContentAtRoot()
+        .First() //Root document
+        .Children() //Level 2 documents
+        .Where(x => x.DocumentTypeAlias == "projectsOverview")
+        .First() //Projects overview document
+        .Children() //Projects documents
+        .Where(x => x.HasValue("projectStatus") &&
+        Umbraco.GetPreValueAsString(
+        x.GetPropertyValue<int>("projectStatus")) == "Completed")
+        .Where(x => x.IsVisible()) // Only visible documents
+        .OrderByDescending(x => x.CreateDate); //Newest projects first
+
+    }
 }
 <ul class="navbar-nav ml-auto nav">
     <li class="nav-item @((Model.Content.Name == root.Name) ? "active" : null)">
@@ -50,7 +122,7 @@
                             foreach (var subMenuItem in selectionChilds)
                             {
 
-                                <li class="nav-item" >
+                                <li class="nav-item">
                                     <a class="dropdown-item" href="@subMenuItem.Url">@subMenuItem.Name</a>
                                 </li>
 
@@ -81,7 +153,7 @@
                 {
                     // if a member is logged in, then the "Login" item in navigation menu will appear as "Account"
                     if (Members.GetCurrentLoginStatus().IsLoggedIn)
-                    { 
+                    {
                         <li class="nav-item @((Model.Content.Name == menuItem.Name) ? "active" : null)">
                             <a class="nav-link" href="@menuItem.Url">Account</a>
                         </li>

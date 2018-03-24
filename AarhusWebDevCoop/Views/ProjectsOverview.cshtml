@@ -3,22 +3,8 @@
 
 @{
     Layout = "Master.cshtml";
-
-    //var page = Umbraco.Content(1079);
-
-
-    IEnumerable<IPublishedContent> page = Umbraco.TypedContentAtRoot()
-    .First() //Root document
-    .Children() //Level 2 documents
-    .Where(x => x.DocumentTypeAlias == "projectsOverview")
-    .First() //Projects overview document
-    .Children() //Projects documents
-    .Where(x => x.HasValue("projectStatus") &&
-    Umbraco.GetPreValueAsString(
-    x.GetPropertyValue<int>("projectStatus")) == "Completed")
-    .Where(x => x.IsVisible()) // Only visible documents
-    .OrderByDescending(x => x.CreateDate); //Newest projects first
 }
+
 
 <div class="fullsection">
     <br />

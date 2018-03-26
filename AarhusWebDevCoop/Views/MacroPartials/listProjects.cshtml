@@ -19,7 +19,7 @@
     Umbraco.GetPreValueAsString(
     x.GetPropertyValue<int>("projectStatus")) == "Completed")
     .Where(x => x.IsVisible()) // Only visible documents
-    .OrderByDescending(x => x.CreateDate); //Newest projects first
+    .OrderByDescending(x => x.CreateDate); // Newest projects first
 
     if (Members.GetCurrentLoginStatus().IsLoggedIn)
     {
@@ -38,7 +38,7 @@
                 .First() //Projects overview document
                 .Children() //Projects documents
                 .Where(x => x.IsVisible()) // Only visible documents
-                .OrderByDescending(x => x.CreateDate); //Newest projects first
+                .OrderByDescending(x => x.CreateDate); // Newest projects first
             }
         }
 
@@ -62,7 +62,7 @@
                 Umbraco.GetPreValueAsString(
                 x.GetPropertyValue<int>("projectStatus")) == "Under development")
                 .Where(x => x.IsVisible()) // Only visible documents
-                .OrderByDescending(x => x.CreateDate); //Newest projects first
+                .OrderByDescending(x => x.CreateDate); // Newest projects first
 
             }
         }
@@ -82,7 +82,7 @@
         Umbraco.GetPreValueAsString(
         x.GetPropertyValue<int>("projectStatus")) == "Completed")
         .Where(x => x.IsVisible()) // Only visible documents
-        .OrderByDescending(x => x.CreateDate); //Newest projects first
+        .OrderByDescending(x => x.CreateDate); // Newest projects first
 
     }
 

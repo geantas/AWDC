@@ -20,6 +20,7 @@ namespace AarhusWebDevCoop.ViewModels
         public string Subject { get; set; }
         [Required(ErrorMessage = "Please enter a message")]
         public string Message { get; set; }
+        public string test { get; set; }
 
     }
 }

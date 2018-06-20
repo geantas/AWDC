@@ -7,8 +7,10 @@
     It also highlights the current active page/section in the navigation with the CSS class "current".
 *@
 
-@{ var root = Model.Content.Site(); }
-@{ var selection = root.Children.Where(x => x.IsVisible()).ToArray();
+@{ var root = Model.Content.Site();
+   var selection = root.Children.Where(x => x.IsVisible()).ToArray();
+
+
     var selectionChilds = Model.Content.AncestorOrSelf(1)
         .Children.Where(x => x.DocumentTypeAlias != "projectsOverview")
         .First()
@@ -74,7 +76,6 @@
                 x.GetPropertyValue<int>("projectStatus")) == "Under development")
                 .Where(x => x.IsVisible()) // Only visible documents
                 .OrderByDescending(x => x.CreateDate); //Newest projects first
-
             }
         }
 
@@ -94,14 +95,12 @@
         x.GetPropertyValue<int>("projectStatus")) == "Completed")
         .Where(x => x.IsVisible()) // Only visible documents
         .OrderByDescending(x => x.CreateDate); //Newest projects first
-
     }
 }
 <ul class="navbar-nav ml-auto nav">
     <li class="nav-item @((Model.Content.Name == root.Name) ? "active" : null)">
         <a class="nav-link" href="/">@root.Name</a>
     </li>
-
 
     @if (selection.Length > 0)
     {
@@ -113,19 +112,19 @@
 
             if (menuItem.Children().Where(x => x.IsVisible()).Count() > 0 && !isProtected || loginAccess)
             {
-
                 <li class="dropdown">
-                    <a class="dropdown-toggle nav-link @((Model.Content.Name == menuItem.Name) ? "active" : null)" href="@menuItem.Url">@menuItem.Name <b class="caret"></b></a>
+                    <a class="dropdown-toggle nav-link @((Model.Content.Name == menuItem.Name) ? "active" : null)" 
+                       href="@menuItem.Url">@menuItem.Name 
+                        <b class="caret"></b>
+                    </a>
                     <ul class="dropdown-menu navbar-link">
                         @if (menuItem.Name != "Projects")
                         {
                             foreach (var subMenuItem in selectionChilds)
                             {
-
                                 <li class="nav-item">
                                     <a class="dropdown-item" href="@subMenuItem.Url">@subMenuItem.Name</a>
                                 </li>
-
                             }
                         }
                         else
@@ -143,7 +142,6 @@
                                 }
                             }
                         }
-
                     </ul>
                 </li>
             }
@@ -172,7 +170,6 @@
                         <a class="nav-link" href="@menuItem.Url">@menuItem.Name</a>
                     </li>
                 }
-
             }
         }
     }

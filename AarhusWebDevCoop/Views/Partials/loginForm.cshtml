@@ -1,6 +1,4 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
-
-
 @using System.Web.Mvc.Html
 @using ClientDependency.Core.Mvc
 @using Umbraco.Web
@@ -64,7 +62,6 @@ else
     logoutModel.RedirectUrl = "/";
     using (Html.BeginUmbracoForm<UmbLoginStatusController>("HandleLogout"))
     {
-    
         <button class="btn btn-secondary input-medium pullleft">Logout</button>
         @Html.HiddenFor(m => logoutModel.RedirectUrl)
     }

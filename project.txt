@@ -1,0 +1,22 @@
+GitHub repository:
+https://github.com/geantas/AWDC
+
+Umbraco Backend login (Gintas Pociunas)
+username: eaagipo@students.eaaa.dk
+password: prisijungimas
+
+Active member (Jakob Jakobsen)
+username: Activemember1
+password: prisijungimas
+
+Guest member (Rasmus Rasmussen)
+username: Guestmember1
+password: prisijungimas
+
+Writer (Tim Hansson)
+username: notTim@gmail.com
+password: prisijungimas
+
+Editor (Jane Wilfred)
+username: gin745@gmail.com
+password: prisijungimas

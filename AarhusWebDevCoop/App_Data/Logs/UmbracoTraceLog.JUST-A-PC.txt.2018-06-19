@@ -1,0 +1,111 @@
+﻿ 2018-06-19 21:55:13,351 [P9940/D2/T1] INFO  Umbraco.Core.CoreBootManager - Umbraco 7.8.1 application starting on JUST-A-PC
+ 2018-06-19 21:55:13,410 [P9940/D2/T1] INFO  Umbraco.Core.PluginManager - Determining hash of code files on disk
+ 2018-06-19 21:55:13,437 [P9940/D2/T1] INFO  Umbraco.Core.PluginManager - Hash determined (took 27ms)
+ 2018-06-19 21:55:13,614 [P9940/D2/T1] INFO  Umbraco.Core.MainDom - Acquiring MainDom...
+ 2018-06-19 21:55:13,627 [P9940/D2/T1] INFO  Umbraco.Core.MainDom - Acquired MainDom.
+ 2018-06-19 21:55:13,630 [P9940/D2/T1] INFO  Umbraco.Core.PluginManager - Resolving umbraco.interfaces.IDiscoverable
+ 2018-06-19 21:55:14,107 [P9940/D2/T1] INFO  Umbraco.Core.PluginManager - Resolved umbraco.interfaces.IDiscoverable (took 477ms)
+ 2018-06-19 21:55:14,108 [P9940/D2/T1] INFO  Umbraco.Core.PluginManager - Resolving umbraco.interfaces.IApplicationStartupHandler
+ 2018-06-19 21:55:14,119 [P9940/D2/T1] INFO  Umbraco.Core.PluginManager - Resolved umbraco.interfaces.IApplicationStartupHandler (took 11ms)
+ 2018-06-19 21:55:14,173 [P9940/D2/T1] INFO  Umbraco.Core.PluginManager - Resolving umbraco.interfaces.IDiscoverable
+ 2018-06-19 21:55:14,175 [P9940/D2/T1] INFO  Umbraco.Core.PluginManager - Resolved umbraco.interfaces.IDiscoverable (took 1ms)
+ 2018-06-19 21:55:14,175 [P9940/D2/T1] INFO  Umbraco.Core.PluginManager - Resolving Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter
+ 2018-06-19 21:55:14,184 [P9940/D2/T1] INFO  Umbraco.Core.PluginManager - Resolved Umbraco.Core.PropertyEditors.IPropertyEditorValueConverter (took 9ms)
+ 2018-06-19 21:55:14,185 [P9940/D2/T1] INFO  Umbraco.Core.PluginManager - Resolving umbraco.interfaces.IDiscoverable
+ 2018-06-19 21:55:14,186 [P9940/D2/T1] INFO  Umbraco.Core.PluginManager - Resolved umbraco.interfaces.IDiscoverable (took 0ms)
+ 2018-06-19 21:55:14,186 [P9940/D2/T1] INFO  Umbraco.Core.PluginManager - Resolving Umbraco.Core.PropertyEditors.IPropertyValueConverter
+ 2018-06-19 21:55:14,193 [P9940/D2/T1] INFO  Umbraco.Core.PluginManager - Resolved Umbraco.Core.PropertyEditors.IPropertyValueConverter (took 6ms)
+ 2018-06-19 21:55:14,228 [P9940/D2/T1] INFO  Umbraco.Core.PluginManager - Resolving umbraco.interfaces.IDiscoverable
+ 2018-06-19 21:55:14,229 [P9940/D2/T1] INFO  Umbraco.Core.PluginManager - Resolved umbraco.interfaces.IDiscoverable (took 0ms)
+ 2018-06-19 21:55:14,229 [P9940/D2/T1] INFO  Umbraco.Core.PluginManager - Resolving Umbraco.Web.Mvc.SurfaceController
+ 2018-06-19 21:55:14,233 [P9940/D2/T1] INFO  Umbraco.Core.PluginManager - Resolved Umbraco.Web.Mvc.SurfaceController (took 4ms)
+ 2018-06-19 21:55:14,234 [P9940/D2/T1] INFO  Umbraco.Core.PluginManager - Resolving umbraco.interfaces.IDiscoverable
+ 2018-06-19 21:55:14,234 [P9940/D2/T1] INFO  Umbraco.Core.PluginManager - Resolved umbraco.interfaces.IDiscoverable (took 0ms)
+ 2018-06-19 21:55:14,234 [P9940/D2/T1] INFO  Umbraco.Core.PluginManager - Resolving Umbraco.Web.WebApi.UmbracoApiController
+ 2018-06-19 21:55:14,238 [P9940/D2/T1] INFO  Umbraco.Core.PluginManager - Resolved Umbraco.Web.WebApi.UmbracoApiController (took 3ms)
+ 2018-06-19 21:55:19,529 [P9940/D2/T1] INFO  Umbraco.Core.DatabaseContext - CanConnect = True
+ 2018-06-19 21:55:19,894 [P9940/D2/T1] INFO  Umbraco.Core.PluginManager - Resolving Umbraco.Core.Models.PublishedContent.PublishedContentModel
+ 2018-06-19 21:55:19,911 [P9940/D2/T1] INFO  Umbraco.Core.PluginManager - Resolved Umbraco.Core.Models.PublishedContent.PublishedContentModel (took 16ms)
+ 2018-06-19 21:55:20,023 [P9940/D2/T1] INFO  Umbraco.Web.Cache.CacheRefresherEventHandler - Initializing Umbraco internal event handlers for cache refreshing
+ 2018-06-19 21:55:20,550 [P9940/D2/T1] INFO  Umbraco.Web.Search.ExamineEvents - Initializing Examine and binding to business logic events
+ 2018-06-19 21:55:20,551 [P9940/D2/T1] INFO  Umbraco.Web.Search.ExamineEvents - Adding examine event handlers for index providers: 3
+ 2018-06-19 21:55:20,644 [P9940/D2/T1] INFO  Umbraco.Core.CoreBootManager - Umbraco application startup complete (took 7518ms)
+ 2018-06-19 21:55:20,990 [P9940/D2/T15] INFO  Umbraco.Core.Sync.ApplicationUrlHelper - New ApplicationUrl detected: http://localhost:59718/umbraco
+ 2018-06-19 21:55:20,993 [P9940/D2/T15] INFO  Umbraco.Core.Sync.ApplicationUrlHelper - ApplicationUrl: http://localhost:59718/umbraco (UmbracoModule request)
+ 2018-06-19 21:55:21,363 [P9940/D2/T15] INFO  umbraco.content - Load Xml from file...
+ 2018-06-19 21:55:21,378 [P9940/D2/T15] INFO  umbraco.content - Loaded Xml from file.
+ 2018-06-19 21:55:22,827 [P9940/D2/T15] INFO  Umbraco.Core.PluginManager - Resolving umbraco.interfaces.IDiscoverable
+ 2018-06-19 21:55:22,828 [P9940/D2/T15] INFO  Umbraco.Core.PluginManager - Resolved umbraco.interfaces.IDiscoverable (took 0ms)
+ 2018-06-19 21:55:22,828 [P9940/D2/T15] INFO  Umbraco.Core.PluginManager - Resolving Umbraco.Core.PropertyEditors.IParameterEditor
+ 2018-06-19 21:55:22,832 [P9940/D2/T15] INFO  Umbraco.Core.PluginManager - Resolved Umbraco.Core.PropertyEditors.IParameterEditor (took 3ms)
+ 2018-06-19 21:55:27,613 [P9940/D2/T15] INFO  Umbraco.Core.PluginManager - Resolving umbraco.interfaces.IDiscoverable
+ 2018-06-19 21:55:27,613 [P9940/D2/T15] INFO  Umbraco.Core.PluginManager - Resolved umbraco.interfaces.IDiscoverable (took 0ms)
+ 2018-06-19 21:55:27,613 [P9940/D2/T15] INFO  Umbraco.Core.PluginManager - Resolving [Umbraco.Core.Persistence.Mappers.MapperForAttribute]Umbraco.Core.Persistence.Mappers.BaseMapper
+ 2018-06-19 21:55:27,629 [P9940/D2/T15] INFO  Umbraco.Core.PluginManager - Resolved [Umbraco.Core.Persistence.Mappers.MapperForAttribute]Umbraco.Core.Persistence.Mappers.BaseMapper (took 15ms)
+ 2018-06-19 21:55:28,096 [P9940/D2/T15] INFO  Umbraco.Core.PluginManager - Resolving umbraco.interfaces.IDiscoverable
+ 2018-06-19 21:55:28,096 [P9940/D2/T15] INFO  Umbraco.Core.PluginManager - Resolved umbraco.interfaces.IDiscoverable (took 0ms)
+ 2018-06-19 21:55:28,097 [P9940/D2/T15] INFO  Umbraco.Core.PluginManager - Resolving umbraco.cms.businesslogic.macro.IMacroEngine
+ 2018-06-19 21:55:28,100 [P9940/D2/T15] INFO  Umbraco.Core.PluginManager - Resolved umbraco.cms.businesslogic.macro.IMacroEngine (took 3ms)
+ 2018-06-19 21:55:29,614 [P9940/D2/T15] INFO  Umbraco.Core.PluginManager - Resolving umbraco.interfaces.IDiscoverable
+ 2018-06-19 21:55:29,614 [P9940/D2/T15] INFO  Umbraco.Core.PluginManager - Resolved umbraco.interfaces.IDiscoverable (took 0ms)
+ 2018-06-19 21:55:29,615 [P9940/D2/T15] INFO  Umbraco.Core.PluginManager - Resolving Umbraco.Core.Deploy.IServiceConnector
+ 2018-06-19 21:55:29,618 [P9940/D2/T15] INFO  Umbraco.Core.PluginManager - Resolved Umbraco.Core.Deploy.IServiceConnector (took 2ms)
+ 2018-06-19 21:56:21,450 [P9940/D2/T15] INFO  umbraco.BusinessLogic.Log - Log scrubbed.  Removed all items older than 2018-06-18 21:56:21
+ 2018-06-19 21:57:58,857 [P9940/D2/T15] INFO  Umbraco.Core.Security.UmbracoMembershipProviderBase - Login attempt failed for username eaagipo@students.eaaa.dk from IP address ::1, the user does not exist
+ 2018-06-19 21:57:58,862 [P9940/D2/T15] INFO  Umbraco.Web.Mvc.UmbracoPageResult - Executing Umbraco RouteDefinition controller
+ 2018-06-19 21:57:58,920 [P9940/D2/T15] INFO  Umbraco.Web.Mvc.UmbracoPageResult - Finished (took 57ms)
+ 2018-06-19 21:58:00,478 [P9940/D2/T15] INFO  Umbraco.Core.Security.UmbracoMembershipProviderBase - Login attempt failed for username eaagipo@students.eaaa.dk from IP address ::1, the user does not exist
+ 2018-06-19 21:58:00,479 [P9940/D2/T15] INFO  Umbraco.Web.Mvc.UmbracoPageResult - Executing Umbraco RouteDefinition controller
+ 2018-06-19 21:58:00,516 [P9940/D2/T15] INFO  Umbraco.Web.Mvc.UmbracoPageResult - Finished (took 37ms)
+ 2018-06-19 21:58:06,073 [P9940/D2/T6] INFO  Umbraco.Core.Security.UmbracoMembershipProviderBase - Login attempt succeeded for username Activemember1 from IP address ::1
+ 2018-06-19 21:58:17,392 [P9940/D2/T24] INFO  Umbraco.Core.Security.UmbracoMembershipProviderBase - Login attempt succeeded for username Guestmember1 from IP address ::1
+ 2018-06-19 22:15:37,346 [P9940/D2/T185] INFO  Umbraco.Core.PluginManager - Resolving umbraco.interfaces.IDiscoverable
+ 2018-06-19 22:15:37,346 [P9940/D2/T185] INFO  Umbraco.Core.PluginManager - Resolved umbraco.interfaces.IDiscoverable (took 0ms)
+ 2018-06-19 22:15:37,347 [P9940/D2/T185] INFO  Umbraco.Core.PluginManager - Resolving [Umbraco.Web.Trees.TreeAttribute]Umbraco.Web.Trees.TreeController
+ 2018-06-19 22:15:37,352 [P9940/D2/T185] INFO  Umbraco.Core.PluginManager - Resolved [Umbraco.Web.Trees.TreeAttribute]Umbraco.Web.Trees.TreeController (took 5ms)
+ 2018-06-19 22:15:37,494 [P9940/D2/T182] INFO  Umbraco.Core.PluginManager - Resolving umbraco.interfaces.IDiscoverable
+ 2018-06-19 22:15:37,495 [P9940/D2/T182] INFO  Umbraco.Core.PluginManager - Resolved umbraco.interfaces.IDiscoverable (took 1ms)
+ 2018-06-19 22:15:37,495 [P9940/D2/T182] INFO  Umbraco.Core.PluginManager - Resolving umbraco.interfaces.IAction
+ 2018-06-19 22:15:37,499 [P9940/D2/T182] INFO  Umbraco.Core.PluginManager - Resolved umbraco.interfaces.IAction (took 3ms)
+ 2018-06-19 22:15:39,607 [P9940/D2/T177] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: Login attempt failed for username Guestmember1 from IP address ::1
+ 2018-06-19 22:15:42,652 [P9940/D2/T163] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: Login attempt succeeded for username eaagipo@students.eaaa.dk from IP address ::1
+ 2018-06-19 22:15:42,653 [P9940/D2/T163] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: User: eaagipo@students.eaaa.dk logged in from IP address ::1
+ 2018-06-19 22:15:42,824 [P9940/D2/T163] ERROR Umbraco.Web.WebApi.Filters.AngularAntiForgeryHelper - Could not validate XSRF token
+System.Web.Mvc.HttpAntiForgeryException (0x80004005): The anti-forgery token could not be decrypted. If this application is hosted by a Web Farm or cluster, ensure that all machines are running the same version of ASP.NET Web Pages and that the <machineKey> configuration specifies explicit encryption and validation keys. AutoGenerate cannot be used in a cluster.
+   at System.Web.Helpers.AntiXsrf.AntiForgeryTokenSerializer.Deserialize(String serializedToken)
+   at System.Web.Helpers.AntiXsrf.AntiForgeryWorker.Validate(HttpContextBase httpContext, String cookieToken, String formToken)
+   at Umbraco.Web.WebApi.Filters.AngularAntiForgeryHelper.ValidateTokens(String cookieToken, String headerToken)
+ 2018-06-19 22:15:43,001 [P9940/D2/T184] INFO  Umbraco.Core.PluginManager - Resolving umbraco.interfaces.IDiscoverable
+ 2018-06-19 22:15:43,001 [P9940/D2/T184] INFO  Umbraco.Core.PluginManager - Resolved umbraco.interfaces.IDiscoverable (took 0ms)
+ 2018-06-19 22:15:43,002 [P9940/D2/T184] INFO  Umbraco.Core.PluginManager - Resolving umbraco.interfaces.ITree
+ 2018-06-19 22:15:43,005 [P9940/D2/T184] INFO  Umbraco.Core.PluginManager - Resolved umbraco.interfaces.ITree (took 3ms)
+ 2018-06-19 22:15:43,026 [P9940/D2/T184] INFO  Umbraco.Core.PluginManager - Resolving umbraco.interfaces.IDiscoverable
+ 2018-06-19 22:15:43,026 [P9940/D2/T184] INFO  Umbraco.Core.PluginManager - Resolved umbraco.interfaces.IDiscoverable (took 0ms)
+ 2018-06-19 22:15:43,027 [P9940/D2/T184] INFO  Umbraco.Core.PluginManager - Resolving [Umbraco.Web.Trees.TreeAttribute]Umbraco.Web.Trees.TreeController
+ 2018-06-19 22:15:43,027 [P9940/D2/T184] INFO  Umbraco.Core.PluginManager - Resolved [Umbraco.Web.Trees.TreeAttribute]Umbraco.Web.Trees.TreeController (took 0ms)
+ 2018-06-19 22:15:43,031 [P9940/D2/T184] INFO  Umbraco.Core.PluginManager - Resolving umbraco.interfaces.IDiscoverable
+ 2018-06-19 22:15:43,031 [P9940/D2/T184] INFO  Umbraco.Core.PluginManager - Resolved umbraco.interfaces.IDiscoverable (took 0ms)
+ 2018-06-19 22:15:43,031 [P9940/D2/T184] INFO  Umbraco.Core.PluginManager - Resolving [umbraco.businesslogic.TreeAttribute]umbraco.interfaces.ITree
+ 2018-06-19 22:15:43,035 [P9940/D2/T184] INFO  Umbraco.Core.PluginManager - Resolved [umbraco.businesslogic.TreeAttribute]umbraco.interfaces.ITree (took 3ms)
+ 2018-06-19 22:15:43,056 [P9940/D2/T184] INFO  Umbraco.Core.PluginManager - Resolving umbraco.interfaces.IDiscoverable
+ 2018-06-19 22:15:43,056 [P9940/D2/T184] INFO  Umbraco.Core.PluginManager - Resolved umbraco.interfaces.IDiscoverable (took 0ms)
+ 2018-06-19 22:15:43,057 [P9940/D2/T184] INFO  Umbraco.Core.PluginManager - Resolving [umbraco.businesslogic.ApplicationAttribute]umbraco.interfaces.IApplication
+ 2018-06-19 22:15:43,061 [P9940/D2/T184] INFO  Umbraco.Core.PluginManager - Resolved [umbraco.businesslogic.ApplicationAttribute]umbraco.interfaces.IApplication (took 4ms)
+ 2018-06-19 22:15:50,236 [P9940/D2/T157] INFO  Umbraco.Core.PluginManager - Resolving umbraco.interfaces.IDiscoverable
+ 2018-06-19 22:15:50,237 [P9940/D2/T157] INFO  Umbraco.Core.PluginManager - Resolved umbraco.interfaces.IDiscoverable (took 0ms)
+ 2018-06-19 22:15:50,237 [P9940/D2/T157] INFO  Umbraco.Core.PluginManager - Resolving Umbraco.Web.HealthCheck.HealthCheck
+ 2018-06-19 22:15:50,240 [P9940/D2/T157] INFO  Umbraco.Core.PluginManager - Resolved Umbraco.Web.HealthCheck.HealthCheck (took 3ms)
+ 2018-06-19 22:35:17,252 [P9940/D2/T209] INFO  Umbraco.Core.Logging.OwinLogger - Event Id: 0, state: User logged will be logged out due to timeout: eaagipo@students.eaaa.dk, IP Address: ::1
+ 2018-06-19 22:44:27,301 [P9940/D2/T281] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: Login attempt succeeded for username eaagipo@students.eaaa.dk from IP address ::1
+ 2018-06-19 22:44:27,301 [P9940/D2/T281] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: User: eaagipo@students.eaaa.dk logged in from IP address ::1
+ 2018-06-19 23:07:53,393 [P9940/D2/T76] WARN  Umbraco.Web.Models.Mapping.PreValueDisplayResolver - Could not find persisted pre-value for field tabName
+ 2018-06-19 23:07:55,700 [P9940/D2/T77] WARN  Umbraco.Web.Models.Mapping.PreValueDisplayResolver - Could not find persisted pre-value for field tabName
+ 2018-06-19 23:07:57,304 [P9940/D2/T69] WARN  Umbraco.Web.Models.Mapping.PreValueDisplayResolver - Could not find persisted pre-value for field tabName
+ 2018-06-19 23:08:09,685 [P9940/D2/T68] WARN  Umbraco.Web.Models.Mapping.PreValueDisplayResolver - Could not find persisted pre-value for field maxChars
+ 2018-06-19 23:09:12,600 [P9940/D2/T80] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: Login attempt succeeded for username eaagipo@students.eaaa.dk from IP address ::1
+ 2018-06-19 23:09:12,601 [P9940/D2/T80] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: User: eaagipo@students.eaaa.dk logged in from IP address ::1
+ 2018-06-19 23:10:35,459 [P9940/D2/T84] WARN  Umbraco.Web.Models.Mapping.PreValueDisplayResolver - Could not find persisted pre-value for field maxChars
+ 2018-06-19 23:10:35,475 [P9940/D2/T143] WARN  Umbraco.Web.Models.Mapping.PreValueDisplayResolver - Could not find persisted pre-value for field maxChars
+ 2018-06-19 23:28:44,197 [P9940/D2/T48] INFO  Umbraco.Core.Logging.OwinLogger - Event Id: 0, state: User logged will be logged out due to timeout: eaagipo@students.eaaa.dk, IP Address: ::1
+ 2018-06-19 23:44:07,696 [P9940/D2/T330] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: Login attempt succeeded for username eaagipo@students.eaaa.dk from IP address ::1
+ 2018-06-19 23:44:07,696 [P9940/D2/T330] INFO  Umbraco.Core.Security.BackOfficeSignInManager - Event Id: 0, state: User: eaagipo@students.eaaa.dk logged in from IP address ::1

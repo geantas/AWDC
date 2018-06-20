@@ -2,8 +2,6 @@
 @using Umbraco.Web
 
 @{
-
-
     IEnumerable<IPublishedContent> selection = Umbraco.TypedContentAtRoot()
 .First() //Root document
 .Children() //Level 2 documents
@@ -16,8 +14,6 @@ x.GetPropertyValue<int>("projectStatus")) == "Completed")
 .Where(x => x.IsVisible()) // Only visible documents
 .OrderByDescending(x => x.CreateDate) // Newest projects first
 .Take(3); // Show only 3 projects
-
-
 }
 
 @foreach (var menuItem in selection)
@@ -28,11 +24,9 @@ x.GetPropertyValue<int>("projectStatus")) == "Completed")
     if (!isProtected || loginAccess)
     {
         <div class="d-inline-block">
-
             <a class="project-link" href="@menuItem.Url">
                 @if (menuItem.HasValue("projectPicture"))
                 {
-                    
                     var mediaId = menuItem.GetPropertyValue("projectPicture").ToString();
                     <img class="home-projects-pic" src="@Umbraco.TypedMedia(mediaId).Url" alt="" />
                 } else
@@ -44,9 +38,7 @@ x.GetPropertyValue<int>("projectStatus")) == "Completed")
                 <p>@Umbraco.Truncate(menuItem.GetPropertyValue<string>("projectDescription"), 99)</p>
                 </div>
             </a>
-
         </div>
-
     }
 }
 

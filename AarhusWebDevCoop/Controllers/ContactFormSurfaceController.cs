@@ -18,7 +18,7 @@ namespace AarhusWebDevCoop.Controllers
         {
             return PartialView("ContactForm", new ContactForm());
         }
-
+    
         [HttpPost]
         public ActionResult HandleFormSubmit(ContactForm model)
         {
@@ -28,8 +28,6 @@ namespace AarhusWebDevCoop.Controllers
             }
             else
             {
-
-
                 MailMessage message = new MailMessage();
                 message.To.Add("radubosssss@gmail.com");
                 message.Subject = model.Subject;
@@ -43,12 +41,10 @@ namespace AarhusWebDevCoop.Controllers
                 comment.SetValue("email", model.Email);
                 comment.SetValue("subject", model.Subject);
                 comment.SetValue("messageContent", model.Message);
+                
                 // save to Umbraco
-
                 Services.ContentService.Save(comment);
                 // Services.ContentService.SaveAndPublish(comment);
-                
-
 
                 using (SmtpClient smtp = new SmtpClient())
                 {                                                
